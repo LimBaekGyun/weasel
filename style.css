@@ -1,14 +1,18 @@
- :root {
-  --bg-top: #efe1ca;
-  --bg-bottom: #5e3724;
-  --panel: rgba(255, 248, 238, 0.82);
-  --panel-strong: rgba(255, 244, 228, 0.92);
-  --ink: #20130d;
-  --muted: rgba(32, 19, 13, 0.68);
-  --line: rgba(32, 19, 13, 0.1);
-  --accent: #b45828;
-  --accent-dark: #8e3c15;
-  --white: #fffdf9;
+:root {
+  --bg-top: #f1e7d8;
+  --bg-mid: #d8a36e;
+  --bg-bottom: #613722;
+  --panel: rgba(255, 249, 241, 0.82);
+  --panel-strong: rgba(255, 245, 231, 0.92);
+  --ink: #1f130d;
+  --muted: rgba(31, 19, 13, 0.68);
+  --line: rgba(31, 19, 13, 0.1);
+  --accent: #ba5a24;
+  --accent-dark: #8f3912;
+  --white: #fffdf8;
+  --success: #1f7a4f;
+  --info: #8a4d1d;
+  --idle: #6b615a;
 }
 
 * {
@@ -25,8 +29,8 @@ body {
   color: var(--ink);
   font-family: "Noto Sans KR", sans-serif;
   background:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.45), transparent 28%),
-    linear-gradient(160deg, var(--bg-top), #c98a54 35%, var(--bg-bottom) 100%);
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.46), transparent 28%),
+    linear-gradient(165deg, var(--bg-top), var(--bg-mid) 38%, var(--bg-bottom) 100%);
 }
 
 a {
@@ -41,24 +45,25 @@ a {
 }
 
 .topbar {
+  position: sticky;
+  top: 16px;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 18px 22px;
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
-  background: rgba(255, 248, 238, 0.24);
+  background: rgba(255, 249, 241, 0.24);
   backdrop-filter: blur(14px);
-  position: sticky;
-  top: 16px;
-  z-index: 10;
 }
 
 .brand,
 .hero h1,
 .section-heading h2,
+.card h3,
 .feature-card h3,
-.roadmap-item strong,
+.project-head strong,
 .footer-title {
   font-family: "Space Grotesk", sans-serif;
 }
@@ -73,7 +78,7 @@ a {
   display: flex;
   gap: 18px;
   font-size: 14px;
-  color: rgba(255, 253, 249, 0.9);
+  color: rgba(255, 253, 248, 0.92);
 }
 
 .nav a {
@@ -93,10 +98,9 @@ a {
 
 .hero {
   display: grid;
-  grid-template-columns: 1.35fr 0.9fr;
+  grid-template-columns: 1.4fr 0.9fr;
   gap: 24px;
   padding: 34px;
-  overflow: hidden;
 }
 
 .hero-copy {
@@ -116,16 +120,16 @@ a {
 
 .hero h1 {
   margin: 16px 0 0;
-  font-size: clamp(54px, 8vw, 92px);
-  line-height: 0.95;
+  font-size: clamp(56px, 8vw, 96px);
+  line-height: 0.92;
   letter-spacing: -0.06em;
 }
 
 .lead {
-  max-width: 28ch;
+  max-width: 31ch;
   margin: 22px 0 0;
   font-size: 20px;
-  line-height: 1.7;
+  line-height: 1.75;
   color: var(--muted);
 }
 
@@ -147,7 +151,8 @@ a {
   transition: transform 140ms ease, opacity 140ms ease;
 }
 
-.button:hover {
+.button:hover,
+.footer-links a:hover {
   transform: translateY(-1px);
 }
 
@@ -158,24 +163,23 @@ a {
 
 .button.secondary {
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.58);
 }
 
 .hero-panel {
-  align-self: stretch;
   padding: 22px;
   border-radius: 26px;
   background:
-    radial-gradient(circle at top right, rgba(255, 255, 255, 0.64), transparent 32%),
-    linear-gradient(145deg, #fff4e4, #e5bf97);
-  border: 1px solid rgba(180, 88, 40, 0.1);
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.66), transparent 32%),
+    linear-gradient(145deg, #fff4e5, #e8c39e);
+  border: 1px solid rgba(186, 90, 36, 0.1);
 }
 
 .metric {
   display: grid;
   gap: 8px;
   padding: 18px 0;
-  border-top: 1px solid rgba(32, 19, 13, 0.1);
+  border-top: 1px solid rgba(31, 19, 13, 0.1);
 }
 
 .metric:first-of-type {
@@ -190,7 +194,7 @@ a {
 
 .metric strong {
   font-size: 22px;
-  line-height: 1.3;
+  line-height: 1.35;
 }
 
 .section {
@@ -205,7 +209,7 @@ a {
 
 .section-heading h2 {
   margin: 0;
-  font-size: clamp(30px, 4vw, 50px);
+  font-size: clamp(30px, 4vw, 48px);
   line-height: 1.05;
   letter-spacing: -0.05em;
 }
@@ -218,24 +222,15 @@ a {
 
 .card,
 .feature-card,
-.roadmap-item {
+.project-card {
   padding: 24px;
   border-radius: 24px;
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.5);
-}
-
-.card p,
-.feature-card p,
-.roadmap-item p,
-.footer-copy {
-  margin: 0;
-  line-height: 1.7;
-  color: var(--muted);
+  background: rgba(255, 255, 255, 0.52);
 }
 
 .card.large {
-  background: linear-gradient(145deg, #fff7ed, #f5ddc0);
+  background: linear-gradient(145deg, #fff7ed, #f5dfc6);
 }
 
 .card h3,
@@ -244,8 +239,17 @@ a {
   font-size: 22px;
 }
 
+.card-copy,
+.feature-card p,
+.project-card p,
+.footer-copy {
+  margin: 0;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
 .feature-list,
-.roadmap-list {
+.project-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
@@ -256,18 +260,57 @@ a {
   margin-bottom: 14px;
 }
 
-.roadmap {
+.tag,
+.status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 16px;
+}
+
+.tag {
+  background: rgba(186, 90, 36, 0.12);
+  color: var(--accent-dark);
+}
+
+.projects {
   background: var(--panel-strong);
 }
 
-.roadmap-item {
-  min-height: 180px;
+.project-card.active {
+  background: linear-gradient(145deg, #fff7eb, #f3dcc2);
 }
 
-.roadmap-item strong {
-  display: block;
-  margin-bottom: 12px;
+.project-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.project-head strong {
   font-size: 22px;
+}
+
+.status.live {
+  background: rgba(31, 122, 79, 0.12);
+  color: var(--success);
+}
+
+.status.preparing {
+  background: rgba(138, 77, 29, 0.12);
+  color: var(--info);
+}
+
+.status.planned {
+  background: rgba(107, 97, 90, 0.14);
+  color: var(--idle);
 }
 
 .footer {
@@ -292,23 +335,22 @@ a {
 .footer-links a {
   padding: 12px 16px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.54);
+  background: rgba(255, 255, 255, 0.56);
   border: 1px solid var(--line);
+  transition: transform 140ms ease;
 }
 
 @media (max-width: 920px) {
   .topbar,
-  .footer,
+  .footer {
+    display: grid;
+  }
+
   .hero,
   .about-grid,
   .feature-list,
-  .roadmap-list {
+  .project-grid {
     grid-template-columns: 1fr;
-  }
-
-  .topbar,
-  .footer {
-    display: grid;
   }
 
   .nav {
@@ -317,7 +359,12 @@ a {
   }
 
   .hero h1 {
-    font-size: clamp(44px, 14vw, 72px);
+    font-size: clamp(46px, 14vw, 74px);
+  }
+
+  .project-head {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
 
