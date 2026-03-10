@@ -1,63 +1,341 @@
-:root {
-  --bg: #f2eadf;
-  --ink: #20150f;
-  --accent: #9b4d23;
-  --panel: rgba(255, 249, 241, 0.8);
+ :root {
+  --bg-top: #efe1ca;
+  --bg-bottom: #5e3724;
+  --panel: rgba(255, 248, 238, 0.82);
+  --panel-strong: rgba(255, 244, 228, 0.92);
+  --ink: #20130d;
+  --muted: rgba(32, 19, 13, 0.68);
+  --line: rgba(32, 19, 13, 0.1);
+  --accent: #b45828;
+  --accent-dark: #8e3c15;
+  --white: #fffdf9;
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
-  display: grid;
-  place-items: center;
-  font-family: "Segoe UI", "Malgun Gothic", sans-serif;
   color: var(--ink);
+  font-family: "Noto Sans KR", sans-serif;
   background:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.55), transparent 35%),
-    linear-gradient(145deg, #d9b788, #a86c3d 45%, #6d3d22 100%);
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.45), transparent 28%),
+    linear-gradient(160deg, var(--bg-top), #c98a54 35%, var(--bg-bottom) 100%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0 40px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 248, 238, 0.24);
+  backdrop-filter: blur(14px);
+  position: sticky;
+  top: 16px;
+  z-index: 10;
+}
+
+.brand,
+.hero h1,
+.section-heading h2,
+.feature-card h3,
+.roadmap-item strong,
+.footer-title {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.nav {
+  display: flex;
+  gap: 18px;
+  font-size: 14px;
+  color: rgba(255, 253, 249, 0.9);
+}
+
+.nav a {
+  padding: 8px 0;
+}
+
+.hero,
+.section,
+.footer {
+  margin-top: 22px;
+  border-radius: 32px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow: 0 28px 60px rgba(24, 12, 8, 0.16);
+  backdrop-filter: blur(14px);
 }
 
 .hero {
-  width: min(680px, calc(100% - 32px));
-  padding: 48px 32px;
-  border-radius: 28px;
-  background: var(--panel);
-  border: 1px solid rgba(32, 21, 15, 0.1);
-  box-shadow: 0 24px 60px rgba(32, 21, 15, 0.18);
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1.35fr 0.9fr;
+  gap: 24px;
+  padding: 34px;
+  overflow: hidden;
 }
 
-.eyebrow {
-  margin: 0 0 10px;
-  color: var(--accent);
-  font-weight: 700;
-  letter-spacing: 0.08em;
+.hero-copy {
+  padding: 14px;
+}
+
+.eyebrow,
+.section-kicker,
+.panel-title,
+.feature-index {
   text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
 }
 
-h1 {
-  margin: 0;
-  font-size: clamp(52px, 12vw, 96px);
+.hero h1 {
+  margin: 16px 0 0;
+  font-size: clamp(54px, 8vw, 92px);
   line-height: 0.95;
-  letter-spacing: -0.05em;
-}
-
-.lead,
-.sub {
-  margin: 18px auto 0;
-  max-width: 42ch;
-  line-height: 1.6;
+  letter-spacing: -0.06em;
 }
 
 .lead {
+  max-width: 28ch;
+  margin: 22px 0 0;
   font-size: 20px;
-  font-weight: 600;
+  line-height: 1.7;
+  color: var(--muted);
 }
 
-.sub {
-  color: rgba(32, 21, 15, 0.72);
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: transform 140ms ease, opacity 140ms ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button.primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  color: var(--white);
+}
+
+.button.secondary {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.hero-panel {
+  align-self: stretch;
+  padding: 22px;
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.64), transparent 32%),
+    linear-gradient(145deg, #fff4e4, #e5bf97);
+  border: 1px solid rgba(180, 88, 40, 0.1);
+}
+
+.metric {
+  display: grid;
+  gap: 8px;
+  padding: 18px 0;
+  border-top: 1px solid rgba(32, 19, 13, 0.1);
+}
+
+.metric:first-of-type {
+  border-top: 0;
+  padding-top: 10px;
+}
+
+.metric span {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.metric strong {
+  font-size: 22px;
+  line-height: 1.3;
+}
+
+.section {
+  padding: 34px;
+}
+
+.section-heading {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: clamp(30px, 4vw, 50px);
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 18px;
+}
+
+.card,
+.feature-card,
+.roadmap-item {
+  padding: 24px;
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.card p,
+.feature-card p,
+.roadmap-item p,
+.footer-copy {
+  margin: 0;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.card.large {
+  background: linear-gradient(145deg, #fff7ed, #f5ddc0);
+}
+
+.card h3,
+.feature-card h3 {
+  margin: 0 0 10px;
+  font-size: 22px;
+}
+
+.feature-list,
+.roadmap-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.feature-index {
+  display: inline-block;
+  margin-bottom: 14px;
+}
+
+.roadmap {
+  background: var(--panel-strong);
+}
+
+.roadmap-item {
+  min-height: 180px;
+}
+
+.roadmap-item strong {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 22px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 28px 34px;
+}
+
+.footer-title {
+  margin: 0 0 6px;
+  font-size: 28px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-links a {
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.54);
+  border: 1px solid var(--line);
+}
+
+@media (max-width: 920px) {
+  .topbar,
+  .footer,
+  .hero,
+  .about-grid,
+  .feature-list,
+  .roadmap-list {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar,
+  .footer {
+    display: grid;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    color: var(--ink);
+  }
+
+  .hero h1 {
+    font-size: clamp(44px, 14vw, 72px);
+  }
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    width: min(100% - 20px, 100%);
+    padding-top: 12px;
+  }
+
+  .topbar,
+  .hero,
+  .section,
+  .footer {
+    padding: 22px;
+    border-radius: 24px;
+  }
+
+  .lead {
+    font-size: 18px;
+  }
 }
