@@ -3,143 +3,234 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lim Baek Gyun | Portfolio Hub</title>
-  <meta name="description" content="Lim Baek Gyun의 소개, 포트폴리오, 진행 중 프로젝트를 정리하는 개인 허브 페이지입니다.">
+  <title>Lim Baek Gyun | Portfolio & Projects</title>
+  <meta name="description" content="Lim Baek Gyun의 개인 소개, 포트폴리오 아카이브, 진행 중 프로젝트를 정리하는 개인 허브 페이지입니다.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="noise"></div>
   <div class="page-shell">
     <header class="topbar">
-      <a class="brand" href="#top">LBG</a>
+      <a class="brand" href="#top">
+        <span class="brand-mark">LBG</span>
+        <span class="brand-copy">Portfolio Hub</span>
+      </a>
+
       <nav class="nav">
         <a href="#about">About</a>
-        <a href="#portfolio">Portfolio</a>
+        <a href="#workboard">Workboard</a>
         <a href="#projects">Projects</a>
         <a href="#links">Links</a>
       </nav>
+
+      <p class="topbar-note">Built for future portfolio updates</p>
     </header>
 
     <main id="top">
       <section class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">Personal hub</p>
+          <p class="eyebrow">Personal portfolio / project archive</p>
           <h1>Lim<br>Baek Gyun</h1>
           <p class="lead">
-            이 페이지는 내 소개를 보여주고,
-            나중에 직업 포트폴리오와 진행 중인 프로젝트를 한 곳에서 확인하는 개인 허브로 사용할 공간입니다.
+            개인 소개를 먼저 분명하게 보여주고,
+            이후 직업 포트폴리오와 진행 중인 프로젝트를 한 화면에서 정리하고 확인할 수 있도록 만든 개인 허브입니다.
           </p>
+
+          <div class="chip-row">
+            <span class="chip">About me</span>
+            <span class="chip">Portfolio archive</span>
+            <span class="chip">Project tracking</span>
+          </div>
+
           <div class="actions">
-            <a class="button primary" href="#portfolio">포트폴리오 보기</a>
-            <a class="button secondary" href="#projects">진행 중 프로젝트</a>
+            <a class="button primary" href="#workboard">포트폴리오 자리 보기</a>
+            <a class="button secondary" href="#projects">진행 프로젝트 보기</a>
           </div>
+
+          <p class="hero-note">
+            지금은 구조와 분위기를 먼저 잡아둔 상태입니다.
+            다음 단계에서는 직무 소개, 대표 작업, 프로젝트 상세 카드만 채우면 바로 개인 사이트처럼 사용할 수 있게 설계했습니다.
+          </p>
         </div>
 
-        <aside class="hero-panel">
-          <p class="panel-title">This site is for</p>
-          <div class="metric">
-            <span>Identity</span>
-            <strong>개인 소개 페이지</strong>
-          </div>
-          <div class="metric">
-            <span>Archive</span>
-            <strong>직업 포트폴리오 정리</strong>
-          </div>
-          <div class="metric">
-            <span>Tracking</span>
-            <strong>진행 중 프로젝트 확인</strong>
-          </div>
-        </aside>
-      </section>
-
-      <section class="section" id="about">
-        <div class="section-heading">
-          <p class="section-kicker">About</p>
-          <h2>소개와 방향을 한 화면에 정리</h2>
-        </div>
-        <div class="about-grid">
-          <article class="card large">
-            <p class="card-copy">
-              방문자가 가장 먼저 보게 되는 정보는 이름과 현재 어떤 방향으로 작업하고 있는지입니다.
-              그래서 첫 화면에서 개인 소개와 사이트 용도를 바로 이해할 수 있도록 구성했습니다.
+        <div class="identity-board">
+          <article class="mono-card">
+            <span class="mini-label">Identity frame</span>
+            <strong class="mono">LBG</strong>
+            <p>
+              첫 화면에서 이름과 사이트 용도가 동시에 읽히도록,
+              이 페이지 전체를 개인 브랜딩 보드처럼 구성했습니다.
             </p>
           </article>
-          <article class="card">
-            <h3>Profile</h3>
-            <p class="card-copy">이름, 한 줄 소개, 작업 분야를 담는 기본 프로필 영역입니다.</p>
+
+          <article class="note-card tilt-left">
+            <span class="mini-label">Current use</span>
+            <strong>개인 소개</strong>
+            <p>이름과 방향을 가장 먼저 보여주는 메인 커버.</p>
           </article>
-          <article class="card">
-            <h3>Use</h3>
-            <p class="card-copy">이 사이트를 포트폴리오 허브와 프로젝트 보드로 계속 확장할 수 있습니다.</p>
+
+          <article class="note-card tilt-right">
+            <span class="mini-label">Next use</span>
+            <strong>직업 포트폴리오</strong>
+            <p>지원 직무, 역할, 작업 사례를 카드 단위로 쌓아가는 구조.</p>
+          </article>
+
+          <article class="note-wide">
+            <span class="mini-label">System</span>
+            <div class="wide-grid">
+              <div>
+                <strong>Archive</strong>
+                <p>완료한 작업을 모아두는 포트폴리오 보드</p>
+              </div>
+              <div>
+                <strong>Now</strong>
+                <p>현재 진행 중인 프로젝트를 표시하는 상태 보드</p>
+              </div>
+              <div>
+                <strong>Links</strong>
+                <p>GitHub, 라이브 사이트, 나중에 이력서 링크까지 연결</p>
+              </div>
+            </div>
           </article>
         </div>
       </section>
 
-      <section class="section" id="portfolio">
-        <div class="section-heading">
-          <p class="section-kicker">Portfolio</p>
-          <h2>나중에 올릴 작업물을 위한 자리</h2>
+      <section class="section intro" id="about">
+        <div class="section-head">
+          <p class="section-kicker">About</p>
+          <h2>개인 사이트의 첫인상은 이름보다 방향이 먼저 읽혀야 합니다.</h2>
         </div>
-        <div class="feature-list">
-          <article class="feature-card">
-            <span class="feature-index">01</span>
-            <h3>Selected Work</h3>
-            <p>대표 작업 몇 개를 골라 배치하는 메인 포트폴리오 구역입니다.</p>
-            <span class="tag">Coming soon</span>
+
+        <div class="intro-grid">
+          <article class="statement-card">
+            <p class="statement">
+              이 페이지는 단순 소개문 한 장이 아니라,
+              앞으로 내가 어떤 사람인지, 어떤 작업을 쌓고 있는지, 지금 무엇을 만들고 있는지를 계속 업데이트할 수 있는 기반입니다.
+            </p>
           </article>
-          <article class="feature-card">
-            <span class="feature-index">02</span>
-            <h3>Role & Skills</h3>
-            <p>지원 직무, 사용 기술, 작업 방식 같은 정보를 정리할 수 있습니다.</p>
-            <span class="tag">Ready to expand</span>
+
+          <article class="info-card">
+            <span class="mini-label">Profile</span>
+            <strong>개인 소개 영역</strong>
+            <p>한 줄 소개, 관심 분야, 지원 직무, 현재 상태를 넣는 자립니다.</p>
           </article>
-          <article class="feature-card">
-            <span class="feature-index">03</span>
-            <h3>Case Archive</h3>
-            <p>프로젝트별 설명, 결과, 링크를 카드 단위로 계속 추가할 수 있습니다.</p>
-            <span class="tag">Collection mode</span>
+
+          <article class="info-card">
+            <span class="mini-label">Structure</span>
+            <strong>기록형 구조</strong>
+            <p>완료한 것과 진행 중인 것을 분리해서 보여주기 쉽게 구성했습니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section workboard" id="workboard">
+        <div class="section-head">
+          <p class="section-kicker">Workboard</p>
+          <h2>나중에 올릴 포트폴리오를 위한 카드형 아카이브</h2>
+        </div>
+
+        <div class="work-grid">
+          <article class="work-card featured">
+            <div class="preview preview-large">
+              <span>Featured case study</span>
+            </div>
+            <div class="work-copy">
+              <span class="mini-label">Main slot</span>
+              <h3>대표 작업 01</h3>
+              <p>가장 먼저 보여주고 싶은 프로젝트를 올리는 자리입니다. 프로젝트 개요, 맡은 역할, 사용 기술, 결과를 요약형으로 배치할 수 있습니다.</p>
+              <div class="tag-row">
+                <span class="tag">Role</span>
+                <span class="tag">Process</span>
+                <span class="tag">Outcome</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="preview preview-two">
+              <span>Case archive</span>
+            </div>
+            <div class="work-copy">
+              <span class="mini-label">Archive slot</span>
+              <h3>작업 카드 02</h3>
+              <p>규모가 작은 프로젝트나 실험 작업도 별도 카드로 계속 누적할 수 있습니다.</p>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="preview preview-three">
+              <span>Skill view</span>
+            </div>
+            <div class="work-copy">
+              <span class="mini-label">Resume slot</span>
+              <h3>직무/기술 정리</h3>
+              <p>지원 포지션, 핵심 스택, 강점, 협업 스타일을 간단하게 요약하는 구역입니다.</p>
+            </div>
           </article>
         </div>
       </section>
 
       <section class="section projects" id="projects">
-        <div class="section-heading">
+        <div class="section-head">
           <p class="section-kicker">Projects</p>
-          <h2>진행 중인 일들을 보여주는 보드</h2>
+          <h2>현재 하고 있는 일들을 상태 보드처럼 보여주는 영역</h2>
         </div>
+
         <div class="project-grid">
-          <article class="project-card active">
+          <article class="project-card project-live">
             <div class="project-head">
-              <strong>Personal site setup</strong>
+              <strong>Personal site redesign</strong>
               <span class="status live">Live</span>
             </div>
-            <p>GitHub Pages 연결, 기본 구조, 개인 허브 방향까지 반영한 현재 사이트 상태입니다.</p>
+            <p>개인 허브 방향으로 사이트 구조를 재설계하고, GitHub Pages에 반영한 현재 상태입니다.</p>
           </article>
+
           <article class="project-card">
             <div class="project-head">
               <strong>Portfolio curation</strong>
               <span class="status preparing">Preparing</span>
             </div>
-            <p>나중에 올릴 직업 포트폴리오 항목들을 정리하고 카드 형태로 추가할 공간입니다.</p>
+            <p>대표 작업을 선별하고, 각 프로젝트를 카드와 상세 페이지 형태로 정리할 수 있는 다음 단계입니다.</p>
           </article>
+
           <article class="project-card">
             <div class="project-head">
-              <strong>Next project slot</strong>
+              <strong>Project log slot</strong>
               <span class="status planned">Planned</span>
             </div>
-            <p>새 프로젝트가 생기면 제목, 상태, 간단 설명을 이 영역에 계속 누적할 수 있습니다.</p>
+            <p>새 프로젝트가 생길 때마다 제목, 상태, 요약을 넣어 계속 갱신할 수 있는 고정 슬롯입니다.</p>
           </article>
+        </div>
+
+        <div class="track-strip">
+          <div class="track-step">
+            <span class="track-label">01</span>
+            <strong>Start</strong>
+            <p>아이디어나 초기 진행 상황 기록</p>
+          </div>
+          <div class="track-step">
+            <span class="track-label">02</span>
+            <strong>Build</strong>
+            <p>작업 중인 화면, 역할, 핵심 메모 정리</p>
+          </div>
+          <div class="track-step">
+            <span class="track-label">03</span>
+            <strong>Archive</strong>
+            <p>끝난 뒤 포트폴리오 카드로 이동</p>
+          </div>
         </div>
       </section>
     </main>
 
     <footer class="footer" id="links">
-      <div>
+      <div class="footer-copy-block">
         <p class="footer-title">Lim Baek Gyun</p>
-        <p class="footer-copy">개인 소개, 포트폴리오, 진행 프로젝트를 한 곳에 정리하는 페이지.</p>
+        <p class="footer-copy">개인 소개, 직업 포트폴리오, 진행 중 프로젝트를 한 곳에서 관리하는 개인 페이지.</p>
       </div>
+
       <div class="footer-links">
         <a href="https://limbaekgyun.github.io/weasel/" target="_blank" rel="noreferrer">Live Site</a>
         <a href="https://github.com/LimBaekGyun/weasel" target="_blank" rel="noreferrer">Repository</a>
