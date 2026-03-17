@@ -59,7 +59,6 @@ using (
   lower(email) = lower(coalesce(auth.jwt() ->> 'email', ''))
 );
 
--- Run this once with the email address you will use to log in:
--- insert into public.board_admins (email)
--- values ('you@example.com')
--- on conflict (email) do nothing;
+insert into public.board_admins (email)
+values ('ahskflwk28@gmail.com')
+on conflict (email) do nothing;
