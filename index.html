@@ -239,33 +239,66 @@
         </div>
 
         <div class="board-layout">
-          <form class="board-form" id="board-form">
-            <div class="field-grid">
-              <label class="field">
-                <span>이름</span>
-                <input id="board-author" name="author" type="text" maxlength="24" placeholder="이름 또는 닉네임" required>
-              </label>
+          <div class="board-column">
+            <form class="board-form" id="board-form">
+              <div class="field-grid">
+                <label class="field">
+                  <span>이름</span>
+                  <input id="board-author" name="author" type="text" maxlength="24" placeholder="이름 또는 닉네임" required>
+                </label>
+
+                <label class="field">
+                  <span>제목</span>
+                  <input id="board-title" name="title" type="text" maxlength="80" placeholder="제목을 입력하세요" required>
+                </label>
+              </div>
 
               <label class="field">
-                <span>제목</span>
-                <input id="board-title" name="title" type="text" maxlength="80" placeholder="제목을 입력하세요" required>
+                <span>내용</span>
+                <textarea id="board-content" name="content" rows="7" maxlength="1000" placeholder="방문 기록이나 하고 싶은 말을 남겨보세요." required></textarea>
               </label>
-            </div>
 
-            <label class="field">
-              <span>내용</span>
-              <textarea id="board-content" name="content" rows="7" maxlength="1000" placeholder="방문 기록이나 하고 싶은 말을 남겨보세요." required></textarea>
-            </label>
+              <div class="board-actions">
+                <button class="button primary" id="board-submit" type="submit">글 올리기</button>
+                <button class="button secondary" id="board-refresh" type="button">새로고침</button>
+              </div>
 
-            <div class="board-actions">
-              <button class="button primary" id="board-submit" type="submit">글 올리기</button>
-              <button class="button secondary" id="board-refresh" type="button">새로고침</button>
-            </div>
+              <p class="board-status" id="board-status" data-tone="default">
+                게시판을 초기화하는 중입니다.
+              </p>
+            </form>
 
-            <p class="board-status" id="board-status" data-tone="default">
-              게시판을 초기화하는 중입니다.
-            </p>
-          </form>
+            <aside class="admin-card">
+              <div class="admin-head">
+                <div>
+                  <p class="mini-label">Admin</p>
+                  <strong>삭제 권한 관리</strong>
+                </div>
+                <span class="admin-badge" id="admin-badge" data-state="signed-out">로그아웃 상태</span>
+              </div>
+
+              <p class="admin-copy">
+                삭제 버튼은 관리자 로그인에 성공한 계정에서만 보입니다.
+                관리자 이메일은 Supabase SQL로 한 번만 등록하면 됩니다.
+              </p>
+
+              <form class="admin-form" id="admin-login-form">
+                <label class="field">
+                  <span>관리자 이메일</span>
+                  <input id="admin-email" name="email" type="email" placeholder="you@example.com" autocomplete="email">
+                </label>
+
+                <div class="board-actions">
+                  <button class="button secondary" id="admin-login" type="submit">매직 링크 보내기</button>
+                  <button class="button secondary" id="admin-logout" type="button" hidden>로그아웃</button>
+                </div>
+              </form>
+
+              <p class="admin-status" id="admin-status" data-tone="default">
+                관리자 로그인 전입니다.
+              </p>
+            </aside>
+          </div>
 
           <section class="board-feed" aria-live="polite">
             <div class="board-feed-head">

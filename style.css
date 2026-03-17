@@ -501,7 +501,14 @@ a {
   gap: 18px;
 }
 
+.board-column {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+}
+
 .board-form,
+.admin-card,
 .board-feed,
 .board-post {
   border: 1px solid var(--line);
@@ -510,6 +517,7 @@ a {
 }
 
 .board-form,
+.admin-card,
 .board-feed {
   padding: 24px;
   border-radius: 28px;
@@ -569,6 +577,64 @@ a {
 }
 
 .board-status[data-tone="error"] {
+  color: #9b4f69;
+}
+
+.admin-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.admin-head strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 24px;
+  font-family: "Space Grotesk", sans-serif;
+  letter-spacing: -0.05em;
+}
+
+.admin-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(191, 156, 181, 0.18);
+  color: var(--olive);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.admin-badge[data-state="admin"] {
+  background: rgba(154, 167, 209, 0.18);
+  color: var(--teal);
+}
+
+.admin-badge[data-state="signed-in"] {
+  background: rgba(217, 173, 194, 0.18);
+  color: var(--signal-deep);
+}
+
+.admin-copy,
+.admin-status {
+  margin: 14px 0 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.admin-form {
+  margin-top: 16px;
+}
+
+.admin-status[data-tone="success"] {
+  color: #5d6ca8;
+}
+
+.admin-status[data-tone="error"] {
   color: #9b4f69;
 }
 
@@ -644,6 +710,29 @@ a {
   color: rgba(34, 27, 42, 0.58);
   font-size: 12px;
   white-space: nowrap;
+}
+
+.board-post-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.post-delete {
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid rgba(155, 79, 105, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 244, 248, 0.9);
+  color: #9b4f69;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.post-delete:hover {
+  transform: translateY(-1px);
 }
 
 .board-post-body {
@@ -844,7 +933,8 @@ a {
   }
 
   .board-feed-head,
-  .board-post-head {
+  .board-post-head,
+  .admin-head {
     align-items: flex-start;
     flex-direction: column;
   }
