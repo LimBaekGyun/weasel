@@ -4,6 +4,7 @@ const SUPABASE_URL = "https://dcxlxvfuggftnenqmmbk.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY =
   "sb_publishable_FLG1LIzPECfKa9FYZYCknQ_y-HVVbpY";
 const POSTS_LIMIT = 30;
+const ADMIN_EMAILS = ["ahskflwk28@gmail.com"];
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 
@@ -27,6 +28,16 @@ const adminLoginButton = document.querySelector("#admin-login");
 const adminLogoutButton = document.querySelector("#admin-logout");
 const adminBadge = document.querySelector("#admin-badge");
 const adminStatusField = document.querySelector("#admin-status");
+
+function normalizeEmail(value) {
+  return String(value ?? "").trim().toLowerCase();
+}
+
+function isAdminEmail(email) {
+  const normalized = normalizeEmail(email);
+
+  return ADMIN_EMAILS.some((candidate) => normalizeEmail(candidate) === normalized);
+}
 
 function setStatus(message, tone = "default") {
   statusField.textContent = message;
@@ -99,7 +110,7 @@ function updateAdminUi() {
   adminBadge.dataset.state = "signed-in";
   adminBadge.textContent = "일반 로그인";
   setAdminStatus(
-    `${userEmail} 계정으로 로그인했지만 관리자 목록에 등록되지 않아 삭제 권한은 없습니다.`
+    `${userEmail} 계정으로 로그인했지만 관리자 이메일과 일치하지 않아 삭제 권한은 없습니다.`
   );
 }
 
@@ -200,7 +211,6 @@ function getReadableError(error) {
 
   if (
     lower.includes("board_posts") ||
-    lower.includes("board_admins") ||
     lower.includes("relation") ||
     lower.includes("schema cache")
   ) {
@@ -238,27 +248,13 @@ async function refreshAdminState() {
   }
 
   state.user = user ?? null;
-  state.isAdmin = false;
+  state.isAdmin = isAdminEmail(state.user?.email);
 
   if (!state.user) {
     updateAdminUi();
     renderPosts(state.posts);
     return;
   }
-
-  const { data, error } = await supabase
-    .from("board_admins")
-    .select("email")
-    .limit(1);
-
-  if (error) {
-    updateAdminUi();
-    setAdminStatus(getReadableError(error), "error");
-    renderPosts(state.posts);
-    return;
-  }
-
-  state.isAdmin = Array.isArray(data) && data.length > 0;
   updateAdminUi();
   renderPosts(state.posts);
 }

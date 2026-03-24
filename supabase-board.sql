@@ -9,19 +9,11 @@ create table if not exists public.board_posts (
 create index if not exists board_posts_created_at_idx
   on public.board_posts (created_at desc);
 
-create table if not exists public.board_admins (
-  email text primary key,
-  created_at timestamptz not null default now(),
-  check (position('@' in email) > 1)
-);
-
 grant usage on schema public to anon, authenticated;
 grant select, insert on table public.board_posts to anon, authenticated;
-grant select on table public.board_admins to authenticated;
 grant usage, select on sequence public.board_posts_id_seq to anon, authenticated;
 
 alter table public.board_posts enable row level security;
-alter table public.board_admins enable row level security;
 
 drop policy if exists "Public can read board posts" on public.board_posts;
 create policy "Public can read board posts"
@@ -43,22 +35,7 @@ on public.board_posts
 for delete
 to authenticated
 using (
-  exists (
-    select 1
-    from public.board_admins admins
-    where lower(admins.email) = lower(coalesce(auth.jwt() ->> 'email', ''))
+  lower(coalesce(auth.jwt() ->> 'email', '')) in (
+    lower('ahskflwk28@gmail.com')
   )
 );
-
-drop policy if exists "Admins can read own admin row" on public.board_admins;
-create policy "Admins can read own admin row"
-on public.board_admins
-for select
-to authenticated
-using (
-  lower(email) = lower(coalesce(auth.jwt() ->> 'email', ''))
-);
-
-insert into public.board_admins (email)
-values ('ahskflwk28@gmail.com')
-on conflict (email) do nothing;
